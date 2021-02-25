@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Quiz</title>
+</head>
+<body>
+    <section id="quiz" class="section">
+        <div class="container section-center" id="quiz-box">
+            <h1 class="timer">Time left: 10s</h1>
+            <div class="question-status">
+                <h1 class="question-num">Question 1 of 4</h1>
+                <h2 class="score">Score: 0</h2>
+            </div>
+            <div class="quiz-container"></div>
+        </div>
+        <div class="score-records">
+            <h1 class="records-title"><span>Congratulations!</span> Now you can save your score! </h1>
+            <input type="text" class="username" placeholder="Username">
+            <button class="btn-save">Save</button>
+            <button class="btn-play-again">Play again</button>
+            <button class="btn-home"><a href="./index.html">Go to home</a></button>
+            <div class="high-scores">
+                <h2 class="high-scores-title">Highest scores</h2>
+                <div class="scores-info">
+                </div>
+            </div>
+        </div>
+        <div class="container section-center" id="home-container">
+            <h1 class="quiz-title text-center">Quiz App</h1>
+            <button class="btn-play"><a href=""">Play</a></button>
+            <button class="btn-exit">Exit</button>
+        </div>
+        <div class="sound-container">
+            <!-- <audio id="audio"></audio> -->
+            <audio src="./audio/startcountdown.wav" type="audio/wav" id="audio-count-down"></audio> 
+            <!-- <audio src="https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3" autoplay></audio>  -->
+            <!-- <audio src="http://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3" autoplay></audio>  -->
+            <!-- <audio src="./audio/SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.mp3" autoplay></audio> -->
+        </div>
+    </section>
+    <script src="./script.js"></script>
+</body>
+</html>
