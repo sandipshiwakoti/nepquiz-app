@@ -387,7 +387,7 @@ const timerElem = document.querySelector(".timer");
 
 let counter = 0;
 let scorePoint = 0;
-let answerFlag = false;
+// let answerFlag = false;
 
 
 // for countdown
@@ -398,6 +398,7 @@ let audioCountDown = document.querySelector("#audio-count-down");
 
 
 // ./audio/startcountdown.wav
+let timeFlag =false;
 
 function startCountDown(){
     timeCount = 10;
@@ -420,6 +421,8 @@ function startCountDown(){
 
 function createQuiz(){
     if(counter > questions.length - 1){
+        audioCountDown.pause();
+        audioCountDown.currentTime = 0;
         soundPlay("./audio/SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.mp3");
         scoreRecords.style.display = "block";
         container.style.opacity = "0";
@@ -452,10 +455,11 @@ document.addEventListener("click", e => {
     if(e.target.classList.contains("answer")){
         clearTimeout(timeOutId);
         clearInterval(timerId);
-        // soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
+        // // soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
 
         audioCountDown.pause();
         audioCountDown.currentTime = 0;
+        audioCountDown.disabled = true;
 
         const answerElem = e.target;
         const optionSelected = e.target.dataset.option
@@ -474,10 +478,18 @@ document.addEventListener("click", e => {
             timerElem.innerText = "Incorrect!";
             soundPlay("./audio/disappoint.mp3");
         }
+
+        const children =e.target.parentElement.children;
+        for(let i = 0; i < 4; i++){
+            children[i].style.pointerEvents = "none";
+        }
+
         setTimeout(() => {
-            counter++;
-            timerElem.innerText = "Next Question";
-            createQuiz();
+                counter++;
+                audioCountDown.pause();
+                audioCountDown.currentTime = 0;
+                timerElem.innerText = "Next Question";
+                createQuiz();
         }, 1000);
     }
 });
@@ -574,7 +586,7 @@ btnPlay.addEventListener("click", (e) => {
     e.preventDefault();
     homeContainer.style.display = "none";
     container.style.display = "block";
-    soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
+    // soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
     setTimeout(()=>{
         createQuiz();
         displayScore();
@@ -585,7 +597,8 @@ btnPlayAgain.addEventListener("click", () => {
     homeContainer.style.display = "none";
     scoreRecords.style.display = "none";
     container.style.display = "block";
-    soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
+    // soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
+    counter = 0;
     setTimeout(()=>{
         createQuiz();
         displayScore();
