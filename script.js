@@ -562,7 +562,7 @@ btnSave.addEventListener("click", () => {
         else {
             alert("You have to enter your name to save score!");
         }
-    },1000);
+    },500);
 });
 
 // home
@@ -580,7 +580,7 @@ btnExit.addEventListener("click", () => {
             var win = window.open("","_self"); /* url = "" or "about:blank"; target="_self" */
             win.close();
         }
-    }, 1000);
+    }, 500);
 });
 
 
@@ -599,12 +599,14 @@ btnPlay.addEventListener("click", (e) => {
         container.style.display = "block";
         createQuiz();
         displayScore();
-    }, 1000);
+    }, 500);
 });
 
 btnPlayAgain.addEventListener("click", (e) => {
     applauseSound.pause();
     applauseSound.currentTime = 0;
+
+
     soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
     setTimeout(()=>{
         homeContainer.style.display = "none";
@@ -613,8 +615,17 @@ btnPlayAgain.addEventListener("click", (e) => {
         container.style.opacity = "1";
         
         counter = 0;
+        scorePoint = 0;
+        scoreElem.innerHTML = `Score: ${scorePoint}`;
+
         createQuiz();
-    },1000);
+
+        btnSave.disabled = false;
+        btnSave.style.cursor = "pointer";
+        btnSave.style.background = "rgb(69, 69, 209)";
+        inputUsername.disabled = false;
+
+    },500);
 })
 
 btnHome.addEventListener("click", (e) => {
@@ -622,7 +633,9 @@ btnHome.addEventListener("click", (e) => {
     applauseSound.pause();
     applauseSound.currentTime = 0;
     soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
-    window.location.reload();
+    setTimeout(()=>{
+        window.location.reload();
+    },500);
 })
 
 
