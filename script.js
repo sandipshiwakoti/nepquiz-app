@@ -395,7 +395,7 @@ let timeCount, timerId, timeOutId;
 
 // audio timeout
 let audioCountDown = document.querySelector("#audio-count-down");
-
+let applauseSound = document.querySelector("#applause-sound");
 
 // ./audio/startcountdown.wav
 let timeFlag =false;
@@ -423,8 +423,10 @@ function createQuiz(){
     if(counter > questions.length - 1){
         audioCountDown.pause();
         audioCountDown.currentTime = 0;
-        soundPlay("./audio/SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.mp3");
+        // soundPlay("./audio/SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.mp3");
+        applauseSound.play();
         scoreRecords.style.display = "block";
+        container.style.display = "none";
         container.style.opacity = "0";
     }
     else {
@@ -547,17 +549,20 @@ function displayScore(){
 }
 
 btnSave.addEventListener("click", () => {
-    if(inputUsername.value){
-        saveScore();
-        displayScore();
-        btnSave.disabled = true;
-        btnSave.style.cursor = "not-allowed";
-        btnSave.style.background = "red";
-        inputUsername.disabled = true;
-    }
-    else {
-        alert("You have to enter your name to save score!");
-    }
+    soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
+    setTimeout(()=>{
+        if(inputUsername.value){
+            saveScore();
+            displayScore();
+            btnSave.disabled = true;
+            btnSave.style.cursor = "not-allowed";
+            btnSave.style.background = "red";
+            inputUsername.disabled = true;
+        }
+        else {
+            alert("You have to enter your name to save score!");
+        }
+    },1000);
 });
 
 // home
@@ -567,11 +572,15 @@ const btnPlay = document.querySelector(".btn-play");
 const btnPlayAgain = document.querySelector(".btn-play-again");
 const btnExit = document.querySelector(".btn-exit");
 const btnHome = document.querySelector(".btn-home");
+
 btnExit.addEventListener("click", () => {
-    if (confirm("Are you sure you want to close window?")) {
-        var win = window.open("","_self"); /* url = "" or "about:blank"; target="_self" */
-        win.close();
-    }
+    soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
+    setTimeout(()=>{
+        if (confirm("Are you sure you want to close window?")) {
+            var win = window.open("","_self"); /* url = "" or "about:blank"; target="_self" */
+            win.close();
+        }
+    }, 1000);
 });
 
 
@@ -584,24 +593,36 @@ function soundPlay(url){
 
 btnPlay.addEventListener("click", (e) => {
     e.preventDefault();
-    homeContainer.style.display = "none";
-    container.style.display = "block";
-    // soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
+    soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
     setTimeout(()=>{
+        homeContainer.style.display = "none";
+        container.style.display = "block";
         createQuiz();
         displayScore();
-    }, 10);
+    }, 1000);
 });
 
-btnPlayAgain.addEventListener("click", () => {
-    homeContainer.style.display = "none";
-    scoreRecords.style.display = "none";
-    container.style.display = "block";
-    // soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
-    counter = 0;
+btnPlayAgain.addEventListener("click", (e) => {
+    applauseSound.pause();
+    applauseSound.currentTime = 0;
+    soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
     setTimeout(()=>{
+        homeContainer.style.display = "none";
+        scoreRecords.style.display = "none";
+        container.style.display = "block";
+        container.style.opacity = "1";
+        
+        counter = 0;
         createQuiz();
-        displayScore();
-    }, 10);
+    },1000);
 })
+
+btnHome.addEventListener("click", (e) => {
+    e.preventDefault();
+    applauseSound.pause();
+    applauseSound.currentTime = 0;
+    soundPlay("https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3");
+    window.location.reload();
+})
+
 

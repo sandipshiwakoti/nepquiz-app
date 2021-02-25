@@ -118,7 +118,7 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 69;
+    /* z-index: 69; */
     display: none;
     text-align: center;
 }
@@ -183,7 +183,7 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 420;
+    /* z-index: 420; */
 }
 
 .quiz-title {
@@ -245,4 +245,9 @@ button {
     .btn-exit {
         padding: 0.5rem 0;
     }
+}
+
+.show {
+    display: block !important;
+    /* opacity: 1 !important; */
 }
