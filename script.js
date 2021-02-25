@@ -624,7 +624,7 @@ btnPlayAgain.addEventListener("click", (e) => {
         btnSave.style.cursor = "pointer";
         btnSave.style.background = "rgb(69, 69, 209)";
         inputUsername.disabled = false;
-
+        inputUsername.value = "";
     },500);
 })
 
