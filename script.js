@@ -375,7 +375,7 @@ function shuffle(){
     });
 }
 shuffle();
-const questions = questionCollection.filter((item, index) => index < 10);
+const questions = questionCollection.filter((item, index) => index < 13);
 const quizContainer = document.querySelector(".quiz-container");
 const questionNum = document.querySelector(".question-num");
 const scoreElem = document.querySelector(".score");
@@ -428,6 +428,10 @@ function createQuiz(){
         scoreRecords.style.display = "block";
         container.style.display = "none";
         container.style.opacity = "0";
+
+
+        const title = document.querySelector(".records-title > span");
+        title.innerHTML = `${scorePoint}`
     }
     else {
         quizContainer.innerHTML =

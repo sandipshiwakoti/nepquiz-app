@@ -150,6 +150,7 @@ button {
 .records-title>span {
     color: brown;
     display: block;
+    font-size: 3rem;
 }
 
 .high-scores-title {
