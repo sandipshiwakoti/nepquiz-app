@@ -375,7 +375,7 @@ function shuffle(){
     });
 }
 shuffle();
-const questions = questionCollection.filter((item, index) => index < 5);
+const questions = questionCollection.filter((item, index) => index < 10);
 const quizContainer = document.querySelector(".quiz-container");
 const questionNum = document.querySelector(".question-num");
 const scoreElem = document.querySelector(".score");
