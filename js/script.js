@@ -654,7 +654,7 @@ btnPlayAgain.addEventListener("click", (e) => {
     container.style.opacity = "1";
     
     shuffle(questionCollection);
-    questions = questionCollection.filter((item, index) => index < 2);
+    questions = questionCollection.filter((item, index) => index < 10);
     counter = 0;
     scorePoint = 0;
     scoreElem.innerHTML = `Score: ${scorePoint} pt`;
