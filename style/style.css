@@ -54,7 +54,8 @@ button {
     align-items: center;
 }
 
-#home-container, #quiz-box {
+#home-container,
+#quiz-box {
     background-color: white;
     padding: 2rem;
     border-radius: .5rem;
@@ -391,22 +392,13 @@ button {
     }
 
     /* container */
-    .container {
+    #quiz-box {
         padding: 1rem;
         width: 90vw;
         font-size: .8rem;
+        min-height: calc(100vh - 3rem);
     }
 
-    #quiz-box {
-        /* min-height: calc(100vh - 3rem); */
-    }
-
-    /* score records */
-    .score-records {
-        padding: 2rem;
-    }
-
-    /* answers */
     .answers {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -421,6 +413,12 @@ button {
         font-size: 1.2rem;
     }
 
+    /* score records */
+    .score-records {
+        padding: 2rem;
+    }
+
+    /* players */
     .table-row {
         font-size: .6rem;
     }
