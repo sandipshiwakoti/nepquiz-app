@@ -105,14 +105,6 @@ const questionCollection = [
         "correct": "d"
     },
     {
-        "question": "Ursa Minor is",
-        "a": "The name of disease",
-        "b": " The name of a satellite",
-        "c": "A group of stars that form the Little Dipper in the most northern constellation",
-        "d": "The name of an island",
-        "correct": "c"
-    },
-    {
         "question": "The brightest star in the sky is",
         "a": "Sun",
         "b": "Sirius",

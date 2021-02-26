@@ -27,7 +27,7 @@ body {
 
 .section-center {
     width: 75vw;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -391,7 +391,12 @@ button {
         padding: 1rem 0;
     }
 
-    /* container */
+    /* home container */
+    #home-container {
+        width: 85vw;
+    }
+
+    /* quiz box */
     #quiz-box {
         padding: 1rem;
         width: 90vw;
@@ -406,20 +411,31 @@ button {
     }
 
     .question {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .answer {
-        font-size: 1.2rem;
+        font-size: .9rem;
+    }
+
+    .question-status {
+        font-size: .7rem;
     }
 
     /* score records */
     .score-records {
         padding: 2rem;
+        min-width: 90vw;
     }
 
     /* players */
-    .table-row {
-        font-size: .6rem;
+    .players {
+        min-width: 85vw;
+        padding: 1rem;
     }
+
+    .table-row {
+        font-size: .5rem;
+    }
+
 }
