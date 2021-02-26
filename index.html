@@ -4,46 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <!-- css -->
+    <link rel="stylesheet" href="./style/style.css">
+    <!-- javascript -->
+    <script src="./js/script.js" defer></script>
     <title>Quiz</title>
 </head>
 <body>
+    <!-- quiz section -->
     <section id="quiz" class="section">
-        <div class="container section-center" id="quiz-box">
+        <!-- home container -->
+        <div class="home-container section-center" id="home-container">
+            <h1 class="quiz-title text-center">Hamro Quiz</h1>
+            <button class="btn btn-play"><span><i class="fas fa-play"></i></span>Play</button>
+            <button class="btn btn-high-score"><span><i class="fas fa-medal"></i></span>High Score</button>
+        </div> <!-- end of home container -->
+        <!-- quiz box -->
+        <div class="quiz-box section-center" id="quiz-box">
+            <span class="volume volume-up"><img src="./img/volume-up.png" alt=""></i></span>
+            <span class="volume mute"><img src="./img/mute.png" alt=""></i></span>
             <h1 class="timer">Time left: 10s</h1>
             <div class="question-status">
                 <h1 class="question-num">Question 1 of 4</h1>
-                <h2 class="score">Score: 0</h2>
+                <h1 class="score">Score: 0 pt</h1>
             </div>
             <div class="quiz-container"></div>
-        </div>
-        <div class="score-records">
-            <h1 class="records-title"><span></span> Congratulations!<br>Now you can save your score! </h1>
+        </div> <!-- end of quiz box -->
+        <!-- score records -->
+        <div class="score-records section-center" id="score-records">
+            <div class="records-title">
+                <span></span>
+                <h1>Congratulations!</h1>
+                <h2>Now you can save your score!</h2>
+            </div>
             <input type="text" class="username" placeholder="Username">
-            <button class="btn-save">Save</button>
-            <button class="btn-play-again">Play again</button>
-            <button class="btn-home"><a href="./index.html">Go to home</a></button>
-            <div class="high-scores">
-                <h2 class="high-scores-title">Highest scores</h2>
-                <div class="scores-info">
+            <button class="btn btn-save"><span><i class="fas fa-save"></i></span>Save Score</button>
+            <button class="btn btn-play-again"><span><i class="fas fa-play"></i></span>Play again</button>
+            <button class="btn btn-high-score"><span><i class="fas fa-medal"></i></span>High Score</button>
+            <button class="btn btn-home"><span><i class="fas fa-home"></i></span>Go to home</button>
+        </div> <!-- end of score records -->
+        <!-- players -->
+        <div class="players section-center" id="players">
+            <h1 class="players-title">High Scores</h1>
+            <div class="table-container">
+                <div class="table-header table-row">
+                    <h1>Rank</h1>
+                    <h1>Name</h1>
+                    <h1>Score</h1>
                 </div>
             </div>
-        </div>
-        <div class="container section-center" id="home-container">
-            <h1 class="quiz-title text-center">Hamro Quiz</h1>
-            <button class="btn-play"><a href=""">Play</a></button>
-            <button class="btn-exit">Exit</button>
-        </div>
+            <button class="btn btn-home"><span><i class="fas fa-home"></i></span>Go to home</button>
+        </div> <!-- end of players -->
+        <!-- sound container -->
         <div class="sound-container">
-            <!-- <audio id="audio"></audio> -->
-            <!-- <audio src="./audio/theme.mp3" type="audio/wav" id="audio-count-down"></audio>  -->
+            <audio src="./audio/playstart.mp3" type="audio/wav" id="play-counter-sound"></audio> 
             <audio src="./audio/startcountdown.wav" type="audio/wav" id="audio-count-down"></audio> 
             <audio src="./audio/SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.mp3" type="audio/wav" id="applause-sound"></audio> 
-            <!-- <audio src="https://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3" autoplay></audio>  -->
-            <!-- <audio src="http://soundbible.com/mp3/Robot_blip-Marianne_Gagnon-120342607.mp3" autoplay></audio>  -->
-            <!-- <audio src="./audio/SMALL_CROWD_APPLAUSE-Yannick_Lemieux-1268806408.mp3" autoplay></audio> -->
-        </div>
+            <audio src="./audio/correct.mp3" type="audio/wav" id="correct-sound"></audio> 
+            <audio src="./audio/disappoint.mp3" type="audio/wav" id="incorrect-sound"></audio> 
+        </div> <!-- end of sound container -->
     </section>
-    <script src="./script.js"></script>
+    <!-- end of quiz section -->
 </body>
 </html>
