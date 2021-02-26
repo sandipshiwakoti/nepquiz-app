@@ -376,7 +376,7 @@ function shuffle(array){
     });
 }
 shuffle(questionCollection);
-let questions = questionCollection.filter((item, index) => index < 2);
+let questions = questionCollection.filter((item, index) => index < 10);
 
 
 const quizContainer = document.querySelector(".quiz-container");
