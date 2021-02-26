@@ -78,6 +78,36 @@ button {
     justify-content: center;
 }
 
+.quiz-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-quit {
+    font-size: 1.3rem;
+    color: white;
+    background-color: black;
+    padding: .1rem .5rem;
+    border-radius: .5rem;
+    transition: all .2s ease-in-out;
+}
+
+.volume {
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.btn-quit:hover,
+.volume:hover {
+    transform: scale(1.1);
+}
+
+.mute {
+    display: none;
+    transition: all .2s ease-in-out;
+}
+
 .question-status {
     display: flex;
     justify-content: space-between;
@@ -376,14 +406,7 @@ button {
     /* opacity: 1 !important; */
 }
 
-/* volume control */
-.volume {
-    cursor: pointer;
-}
 
-.mute {
-    display: none;
-}
 
 /* RESPONSIVE */
 @media screen and (max-width: 768px) {
@@ -401,7 +424,7 @@ button {
         padding: 1rem;
         width: 90vw;
         font-size: .8rem;
-        min-height: calc(100vh - 3rem);
+        min-height: calc(100vh - 20rem);
     }
 
     .answers {

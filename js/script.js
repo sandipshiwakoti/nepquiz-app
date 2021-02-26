@@ -627,7 +627,7 @@ const homeContainer = document.querySelector("#home-container");
 const btnPlay = document.querySelector(".btn-play");
 const btnPlayAgain = document.querySelector(".btn-play-again");
 const btnsHome = document.querySelectorAll(".btn-home");
-
+const btnQuit = document.querySelector(".btn-quit");
 
 btnPlay.addEventListener("click", (e) => {
     e.preventDefault();
@@ -662,6 +662,11 @@ btnPlayAgain.addEventListener("click", (e) => {
     inputUsername.disabled = false;
     inputUsername.value = "";
 })
+
+
+btnQuit.addEventListener("click", () => {
+    window.location.reload();
+});
 
 btnsHome.forEach(btnHome => {
     btnHome.addEventListener("click", (e) => {
@@ -739,8 +744,10 @@ function createTableRow(rank, name, score) {
                         <h1>${count}</h1>`;
             count++;
         }
-    }, 1);
+    }, 0.1);
     
     tableContainer.appendChild(tableRow);
 }
+
+
 
