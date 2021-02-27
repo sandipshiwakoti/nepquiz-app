@@ -440,7 +440,7 @@ export const questionCollection = [
         "correct": "a"
     },
     {
-        "question": "What is the name given to Indian food cooked over charcoal in a clay oven?",
+        "question": "What is the name given to food cooked over charcoal in a clay oven?",
         "a": "Tandoori",
         "b": "Biryani",
         "c": "Pani puri",
