@@ -60,9 +60,6 @@ button {
     padding: 2rem;
     border-radius: .5rem;
     display: none;
-}
-
-#quiz-box {
     /* min-height: calc(100vh - 2rem); */
 }
 
