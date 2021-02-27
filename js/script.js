@@ -104,7 +104,7 @@ function createQuiz(){
             <div class="question-container">
                 <h1 class="question">${questions[counter].question}</h1>
                 <ul class="answers">
-                    <li class="answer" id="check" data-option="${letters[0]}">${questions[counter][letters[0]]}</li>
+                    <li class="answer" data-option="${letters[0]}">${questions[counter][letters[0]]}</li>
                     <li class="answer" data-option="${letters[1]}">${questions[counter][letters[1]]}</li>
                     <li class="answer" data-option="${letters[2]}">${questions[counter][letters[2]]}</li>
                     <li class="answer" data-option="${letters[3]}">${questions[counter][letters[3]]}</li>
@@ -253,7 +253,7 @@ btnSave.addEventListener("click", () => {
             btnSave.style.display = "none";
             inputUsername.style.display = "none";
             msgGreeting.innerText = "You have succcessfully saved/updated your score!";
-            msgSuggestion.innerText = "Check high scores or play again!";
+            msgSuggestion.innerText = "Check scoreboard or play again!";
         }
         else {
             alert("You have to enter your name to save score!");
