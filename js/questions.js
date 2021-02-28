@@ -145,7 +145,7 @@ export const questionCollection = [
     },
     {
         "question": "What is the unit of currency in Laos?",
-        "a": "kip",
+        "a": "Kip",
         "b": "Ruble",
         "c": "Konra",
         "d": "Dollar",
@@ -450,7 +450,7 @@ export const questionCollection = [
     {
         "question": "What is the capital of Scotland?",
         "a": "Edinburgh",
-        "b": "GlasgowDundee",
+        "b": "Glasgow",
         "c": "London",
         "d": "Dundee",
         "correct": "a"

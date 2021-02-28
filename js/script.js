@@ -1,4 +1,4 @@
-import {questionCollection} from "./lib.js";
+import {questionCollection} from "./questions.js";
 
 function shuffle(array){
     array.forEach((item, index) => {
@@ -27,7 +27,10 @@ const msgSuggestion = document.querySelector(".records-title > h2");
 // resets
 let counter = 0;
 let scorePoint = 0;
+let scorePerQuestion = 100;
 let currentUser = "";
+let oldScore = 0;
+let oldUserFlag = false;
 // let answerFlag = false;
 
 
@@ -143,7 +146,7 @@ document.addEventListener("click", e => {
         
         if(optionSelected == questions[counter].correct){
             answerElem.style.background ="#3BFF3B";
-            scorePoint += 100;
+            scorePoint += scorePerQuestion;
             scoreElem.innerHTML = `Score: ${scorePoint} pts`;
             timerElem.innerText = "Correct!";
             timerElem.style.color = "white";
@@ -203,16 +206,19 @@ function getUserScore() {
     return users;
 }
 
+
 function saveScore() {
     
     const name = inputUsername.value.toUpperCase();
     const score = scorePoint;
     const user = {name, score};
 
+    currentUser = name;
+
     let users = getUserScore();
-    let oldUserFlag = false;
     users = users.map(u => {
         if(u.name === name){
+            oldScore = u.score;
             if(score > u.score){
                 u.score = score;
             }
@@ -245,18 +251,41 @@ btnSave.addEventListener("click", () => {
     if(inputUsername.value){
             saveScore();
             // displayScore();
-            btnSave.disabled = true;
-            btnSave.style.cursor = "not-allowed";
-            btnSave.style.background = "red";
-            inputUsername.disabled = true;
+            // btnSave.disabled = true;
+            // btnSave.style.cursor = "not-allowed";
+            // btnSave.style.background = "red";
+            // inputUsername.disabled = true;
 
             btnSave.style.display = "none";
             inputUsername.style.display = "none";
-            msgGreeting.innerText = "You have succcessfully saved/updated your score!";
             msgSuggestion.innerText = "Check scoreboard or play again!";
+            msgGreeting.style.color = "black";
+
+            const fullScorePoint = questions.length * scorePerQuestion;
+            
+            if(scorePoint == fullScorePoint){
+                    msgGreeting.innerText = `Congrats! You have scored the full scorepoint!`;
+            }
+            else if(oldUserFlag){
+                if(scorePoint > oldScore){
+                    msgGreeting.innerText = `Bravo! You have beaten your previous score!`;
+                }
+                else if(scorePoint == oldScore){
+                    msgGreeting.innerText = `Keep Going! You can beat your previous score!`;
+                }
+                else {
+                    msgGreeting.innerText = "Try harder! Your previous score was better than this!";
+                }
+            }
+            else {
+                msgGreeting.innerText = `Congrats! You have successfully saved your score!`;
+            }
         }
         else {
-            alert("You have to enter your name to save score!");
+            // alert("You have to enter your name to save score!");
+            msgGreeting.innerText = `Oops! You forgot to enter your name!`;
+            msgSuggestion.innerText = "";
+            msgGreeting.style.color = "red";
         }
 });
 
@@ -288,6 +317,9 @@ btnPlayAgain.addEventListener("click", (e) => {
     questions = questionCollection.filter((item, index) => index < 10);
     counter = 0;
     scorePoint = 0;
+    currentUser ="";
+    oldScore = 0;
+    oldUserFlag = false;
     scoreElem.innerHTML = `Score: ${scorePoint} pt`;
     timerElem.innerText = "Welcome again!";
     createQuiz();
@@ -295,10 +327,10 @@ btnPlayAgain.addEventListener("click", (e) => {
     btnSave.style.display = "inline";
     inputUsername.style.display = "block";
     
-    btnSave.disabled = false;
-    btnSave.style.cursor = "pointer";
-    btnSave.style.background = "rgb(69, 69, 209)";
-    inputUsername.disabled = false;
+    // btnSave.disabled = false;
+    // btnSave.style.cursor = "pointer";
+    // btnSave.style.background = "rgb(76, 187, 76)";
+    // inputUsername.disabled = false;
     inputUsername.value = "";
 })
 
@@ -375,15 +407,35 @@ function createTableRow(rank, name, score) {
       rank = `<span class="emoji">🥈</span>`;
     else if(rank == 3)
         rank = `<span class="emoji">🥉</span>`;
-    
-    setInterval(()=>{
-        if(count <= score){
+    tableRow.innerHTML = ` <h1>${rank}</h1>
+                        <h1>${name}</h1>
+                        <h1>0</h1>`;
+    if(currentUser){
+        if(tableRow.firstElementChild.nextElementSibling.innerText == currentUser){
+            if(score >= oldScore){
+                count = oldScore;
+            }
+            setInterval(()=>{
+                if(count <= score){
+                    tableRow.innerHTML = ` <h1>${rank}</h1>
+                                <h1>${name}</h1>
+                                <h1>${count}</h1>`;
+                    count++;
+                }
+            }, 0.1);
+            tableRow.classList.add("change-table-row");
+        }
+        else {
             tableRow.innerHTML = ` <h1>${rank}</h1>
                         <h1>${name}</h1>
-                        <h1>${count}</h1>`;
-            count++;
+                        <h1>${score}</h1>`;
         }
-    }, 0.1);
+    }
+    else {
+        tableRow.innerHTML = ` <h1>${rank}</h1>
+                    <h1>${name}</h1>
+                    <h1>${score}</h1>`;
+    }
     
     tableContainer.appendChild(tableRow);
 }
