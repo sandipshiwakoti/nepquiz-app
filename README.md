@@ -1,1 +1,1 @@
-# Website link: [NepQuiz](nepquiz.netlify.app)
+# Website link: [NepQuiz](https://nepquiz.netlify.app/)
