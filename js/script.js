@@ -117,7 +117,7 @@ function createQuiz(){
         
         questionNum.innerText = `Question ${counter+1} of ${questions.length}`;
         
-        const colors = ["#7238BD", "#474644", "#e9e213", "#CB7380"];
+        const colors = ["#7238BD", "#474644", "#ffA500", "#CB7380"];
         shuffle(colors);
 
         const children = document.querySelectorAll(".answer");
