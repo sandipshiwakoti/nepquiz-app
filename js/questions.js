@@ -416,7 +416,7 @@ export const questionCollection = [
         "correct": "a"
     },
     {
-        "question": "Who wrote 'Harry Potter?'",
+        "question": "Who wrote 'Harry Potter'?",
         "a": "Terry Pratchett",
         "b": "J.R.R. Tolkien",
         "c": "J.K. Rowling",
