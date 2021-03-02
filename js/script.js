@@ -17,6 +17,7 @@ const scoreRecords = document.querySelector(".score-records");
 
 const container = document.querySelector("#quiz-box"); /* container variable is assigned for quiz box */
 const timerElem = document.querySelector(".timer");
+const timerBar = document.querySelector(".timer-bar");
 
 // score records
 const pts = document.querySelector(".records-title > span");
@@ -51,6 +52,13 @@ function startCountDown(){
             timerElem.innerText = `Time left: ${timeCount}s`;
             timerElem.style.color = "black";
             timerElem.style.background = "#c3e215";
+
+            if(timeCount > 1){
+                timerBar.style.width = `${timeCount * 10}%`;
+            }
+            else {
+                timerBar.style.width = `0%`;
+            }
         }
         else{
             timerElem.innerText = `You missed!`;
@@ -64,19 +72,23 @@ function startCountDown(){
         counter++;
         audioCountDown.pause();
         audioCountDown.currentTime = 0;
+        // createQuiz();
+        timerBar.classList.add("remove-transition");
         createQuiz();
+        timerBar.offsetWidth;
+        timerBar.classList.remove("remove-transition");
     }, 10000);
 }
 
 function createQuiz(){
     // muteSound("unmute");
+    timerBar.style.width = `100%`;
     if(counter > questions.length - 1){
         audioCountDown.pause();
         audioCountDown.currentTime = 0;
         scoreRecords.style.display = "block";
         container.style.display = "none";
         container.style.opacity = "0";
-
         let count = 0;
         setInterval(()=>{
             if(count <= scorePoint){
@@ -127,7 +139,6 @@ function createQuiz(){
         setTimeout(()=>{
             audioCountDown.play();
         }, 1000);
-        
         startCountDown();
     }
 }
@@ -183,7 +194,10 @@ document.addEventListener("click", e => {
                 timerElem.innerText = "Next Question";
                 timerElem.style.color = "black";
                 timerElem.style.background = "#c3e215";
+                timerBar.classList.add("remove-transition");
                 createQuiz();
+                timerBar.offsetWidth;
+                timerBar.classList.remove("remove-transition");
         }, 2500);
     }
 });

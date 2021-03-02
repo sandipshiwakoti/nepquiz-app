@@ -467,3 +467,28 @@ button {
         font-size: 1rem;
     }
 }
+
+/* timer-bar */
+
+.timer-bar-container {
+    width: 100%;
+    height: .6rem;
+    background-color: aqua;
+    border-radius: .5rem;
+    overflow: hidden;
+    margin-bottom: .5rem;
+}
+
+.timer-bar {
+    background-color: #29216d;
+    width: 100%;
+    height: 100%;
+    transition: all 1s ease-in-out;
+}
+
+.remove-transition {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+}
