@@ -1,13 +1,5 @@
-import {questionCollection} from "./questions.js";
-
-function shuffle(array){
-    array.forEach((item, index) => {
-        const randomIndex = Math.floor(Math.random() * array.length);
-        [array[index], array[randomIndex]] = [array[randomIndex], item];
-    });
-}
-shuffle(questionCollection);
-let questions = questionCollection.filter((item, index) => index < 10);
+// import {questionCollection} from "./questions.js"; //OLD
+import getData from "./getData.js";
 
 
 const quizContainer = document.querySelector(".quiz-container");
@@ -43,6 +35,27 @@ let audioCountDown = document.getElementById("audio-count-down");
 let applauseSound = document.getElementById("applause-sound");
 let correctSound = document.getElementById("correct-sound");
 let incorrectSound = document.getElementById("incorrect-sound");
+
+// questions fetch
+async function getQuestions() {
+    const data = await getData();
+    addQuestions(data);
+}
+
+let questions;
+function addQuestions(data) {
+    questions = data;
+}
+
+function shuffle(array){
+    array.forEach((item, index) => {
+        const randomIndex = Math.floor(Math.random() * array.length);
+        [array[index], array[randomIndex]] = [array[randomIndex], item];
+    });
+}
+
+// shuffle(questionCollection); //OLD
+// let questions = questionCollection.filter((item, index) => index < 10); //OLD
 
 function startCountDown(){
     timeCount = 10;
@@ -327,8 +340,10 @@ btnPlayAgain.addEventListener("click", (e) => {
     container.style.display = "block";
     container.style.opacity = "1";
     
-    shuffle(questionCollection);
-    questions = questionCollection.filter((item, index) => index < 10);
+    // shuffle(questionCollection); //OLD
+    // questions = questionCollection.filter((item, index) => index < 10); //OLD
+
+    getQuestions();
     counter = 0;
     scorePoint = 0;
     currentUser ="";
@@ -456,3 +471,6 @@ function createTableRow(rank, name, score) {
 
 
 
+window.addEventListener("DOMContentLoaded", () => {
+    getQuestions();
+});
