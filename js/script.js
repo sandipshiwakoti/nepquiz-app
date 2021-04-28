@@ -321,6 +321,7 @@ btnPlay.addEventListener("click", (e) => {
   e.preventDefault();
   homeContainer.style.display = "none";
   container.style.display = "block";
+  getQuestions();
   createQuiz();
 });
 
